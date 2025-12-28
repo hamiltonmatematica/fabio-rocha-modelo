@@ -58,10 +58,10 @@ const App: React.FC = () => {
       <nav className={`fixed w-full z-50 transition-all duration-500 ${isScrolled ? 'bg-navy/95 py-4 shadow-2xl backdrop-blur-md border-b border-white/5' : 'bg-transparent py-8'}`}>
         <div className="max-w-7xl mx-auto px-6 sm:px-8 lg:px-10 flex justify-between items-center">
           <div className="flex items-center gap-3">
-            <img src={IMAGES.logo} alt="Fábio Rocha Logo" className="h-10 md:h-12 w-auto" />
-            <div className="hidden sm:block">
-              <span className="text-white font-serif text-xl tracking-[0.1em] block leading-none">FÁBIO ROCHA</span>
-              <span className="text-gold text-[9px] tracking-[0.3em] font-bold uppercase mt-1 block">Tennis Specialist</span>
+            <img src={IMAGES.logo} alt="Fabio Rocha Logo" className="h-10 md:h-12 w-auto" />
+            <div>
+              <span className="text-white font-serif text-lg sm:text-xl tracking-[0.1em] block leading-none">FABIO ROCHA</span>
+              <span className="text-gold text-[8px] sm:text-[9px] tracking-[0.2em] sm:tracking-[0.3em] font-bold uppercase mt-1 block">Tennis Specialist</span>
             </div>
           </div>
 
@@ -113,7 +113,7 @@ const App: React.FC = () => {
               excelência, <span className="text-gold italic">método</span> <br />e autoridade
             </h1>
             <p className="text-gray-400 text-lg md:text-2xl mb-12 leading-relaxed max-w-xl font-light">
-              Treinamento de alto padrão para adultos que buscam evolução técnica impecável e uma experiência premium dentro e fora da quadra.
+              Treinamento de alto padrao para adultos que buscam evolucao tecnica impecavel e uma experiencia premium dentro e fora da quadra.
             </p>
             <div className="flex flex-col sm:flex-row gap-6">
               <a href={WHATSAPP_LINK} target="_blank" rel="noopener noreferrer" className="bg-gold text-navy px-12 py-6 rounded-none font-black uppercase tracking-wider text-sm hover:bg-white transition-all flex items-center justify-center gap-3 shadow-2xl group">
@@ -358,11 +358,6 @@ const App: React.FC = () => {
         </div>
       </footer>
 
-      {/* Floating UI Elements */}
-      <a href={WHATSAPP_LINK} target="_blank" rel="noopener noreferrer" className="fixed bottom-10 right-10 z-40 bg-gold text-navy p-5 rounded-full shadow-[0_0_30px_rgba(197,160,89,0.3)] hover:scale-110 hover:bg-white transition-all group">
-        <Smartphone size={32} />
-        <span className="absolute right-full mr-4 bg-navy text-white text-[10px] font-black uppercase tracking-[0.2em] px-4 py-2 opacity-0 group-hover:opacity-100 transition-opacity whitespace-nowrap border border-white/5">Iniciar Conversa VIP</span>
-      </a>
     </div>
   );
 };
