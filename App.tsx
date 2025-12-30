@@ -44,6 +44,13 @@ const WHATSAPP_LINK = `https://wa.me/${WHATSAPP_PHONE}?text=${encodeURIComponent
 const WHATSAPP_CONSULTORIA_MSG = "Olá, acessei seu site e gostaria de uma consultoria técnica";
 const WHATSAPP_CONSULTORIA_LINK = `https://wa.me/${WHATSAPP_PHONE}?text=${encodeURIComponent(WHATSAPP_CONSULTORIA_MSG)}`;
 
+// Text constants using String.fromCharCode to ensure proper rendering on all devices
+const HERO_TITLE_1 = String.fromCharCode(84, 234, 110, 105, 115, 32, 99, 111, 109); // "Tênis com"
+const HERO_TITLE_2_PART1 = String.fromCharCode(101, 120, 99, 101, 108, 234, 110, 99, 105, 97, 44, 32); // "excelência, "
+const HERO_TITLE_2_PART2 = String.fromCharCode(109, 233, 116, 111, 100, 111); // "método"
+const HERO_SUBTITLE = `Treinamento de alto padr${String.fromCharCode(227)}o para adultos que buscam evolu${String.fromCharCode(231, 227)}o t${String.fromCharCode(233)}cnica impec${String.fromCharCode(225)}vel e uma experi${String.fromCharCode(234)}ncia premium dentro e fora da quadra.`;
+
+
 const App: React.FC = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
@@ -156,12 +163,12 @@ const App: React.FC = () => {
         <div className="relative z-10 max-w-7xl mx-auto px-6 sm:px-8 lg:px-10 w-full">
           <div className="max-w-3xl">
             <h1 className="text-4xl md:text-8xl text-white leading-[1.1] mb-8 font-serif">
-              <span className="block">Tênis com</span>
-              <span className="block">excelência, <span className="text-gold italic">método</span></span>
+              <span className="block">{HERO_TITLE_1}</span>
+              <span className="block">{HERO_TITLE_2_PART1}<span className="text-gold italic">{HERO_TITLE_2_PART2}</span></span>
               <span className="block">e autoridade</span>
             </h1>
             <p className="text-gray-400 text-lg md:text-2xl mb-12 leading-relaxed max-w-xl">
-              Treinamento de alto padrão para adultos que buscam evolução técnica impecável e uma experiência premium dentro e fora da quadra.
+              {HERO_SUBTITLE}
             </p>
 
             <div className="flex flex-col sm:flex-row gap-6">
