@@ -157,7 +157,7 @@ const App: React.FC = () => {
           <div className="max-w-3xl">
             <h1 className="text-4xl md:text-8xl text-white font-serif leading-[1.1] mb-8">
               Tênis com <br />
-              excelência, <span className="text-gold">método</span> <br />e autoridade
+              excelência, <span className="text-gold italic">método</span> <br />e autoridade
             </h1>
             <p className="text-gray-400 text-lg md:text-2xl mb-12 leading-relaxed max-w-xl">
               Treinamento de alto padrão para adultos que buscam evolução técnica impecável e uma experiência premium dentro e fora da quadra.
