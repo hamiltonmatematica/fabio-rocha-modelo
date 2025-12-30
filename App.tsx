@@ -156,12 +156,12 @@ const App: React.FC = () => {
         <div className="relative z-10 max-w-7xl mx-auto px-6 sm:px-8 lg:px-10 w-full">
           <div className="max-w-3xl">
             <h1 className="text-4xl md:text-8xl text-white font-serif leading-[1.1] mb-8">
-              <span className="block">Tênis com</span>
-              <span className="block">excelência, <span className="text-gold italic">método</span></span>
+              <span className="block">T{'\u00EA'}nis com</span>
+              <span className="block">excel{'\u00EA'}ncia, <span className="text-gold italic">m{'\u00E9'}todo</span></span>
               <span className="block">e autoridade</span>
             </h1>
             <p className="text-gray-400 text-lg md:text-2xl mb-12 leading-relaxed max-w-xl">
-              Treinamento de alto padrão para adultos que buscam evolução técnica impecável e uma experiência premium dentro e fora da quadra.
+              Treinamento de alto padr{'\u00E3'}o para adultos que buscam evolu{'\u00E7'}{'\u00E3'}o t{'\u00E9'}cnica impec{'\u00E1'}vel e uma experi{'\u00EA'}ncia premium dentro e fora da quadra.
             </p>
             <div className="flex flex-col sm:flex-row gap-6">
               <a href={WHATSAPP_LINK} target="_blank" rel="noopener noreferrer" className="bg-gold text-navy px-12 py-6 rounded-none font-black uppercase tracking-wider text-sm hover:bg-white transition-all flex items-center justify-center gap-3 shadow-2xl group">
