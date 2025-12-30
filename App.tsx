@@ -13,7 +13,8 @@ import {
   Award,
   ArrowRight,
   Shield,
-  Play
+  Play,
+  Instagram
 } from 'lucide-react';
 
 const PORTFOLIO_ITEMS = [
@@ -407,7 +408,7 @@ const App: React.FC = () => {
 
             <div className="flex gap-6">
               <a href="https://www.instagram.com/fabiotennnis" target="_blank" rel="noopener noreferrer" className="w-12 h-12 border border-white/10 flex items-center justify-center text-white hover:text-gold hover:border-gold transition-all cursor-pointer group">
-                <span className="font-black text-[10px] group-hover:scale-110 transition-transform">IG</span>
+                <Instagram size={20} className="group-hover:scale-110 transition-transform" />
               </a>
             </div>
           </div>
