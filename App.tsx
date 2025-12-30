@@ -155,7 +155,7 @@ const App: React.FC = () => {
 
         <div className="relative z-10 max-w-7xl mx-auto px-6 sm:px-8 lg:px-10 w-full">
           <div className="max-w-3xl">
-            <h1 className="text-4xl md:text-8xl text-white leading-[1.1] mb-8" style={{ fontFamily: 'system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif' }}>
+            <h1 className="text-4xl md:text-8xl text-white leading-[1.1] mb-8 font-serif">
               <span className="block">Tênis com</span>
               <span className="block">excelência, <span className="text-gold italic">método</span></span>
               <span className="block">e autoridade</span>
