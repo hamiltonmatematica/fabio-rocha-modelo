@@ -183,6 +183,7 @@ const App: React.FC = () => {
               <div className="relative group">
                 <div className="absolute -top-6 -left-6 w-full h-full border border-gold/20 z-0"></div>
                 <img src={IMAGES.about} alt="Fábio Rocha Treinador" className="relative z-10 w-full h-[500px] lg:h-[700px] object-cover object-top shadow-2xl transition-all duration-1000" />
+                {/* Elements removed to fix mobile glitch
                 <div className="absolute top-12 -left-12 bg-gold text-navy p-6 hidden lg:block z-20 shadow-2xl">
                   <Shield size={32} />
                 </div>
@@ -190,6 +191,7 @@ const App: React.FC = () => {
                   <p className="text-white font-serif text-2xl italic leading-relaxed">"Excelência é o único <br />padrão aceitável."</p>
                   <p className="text-gold mt-4 text-xs font-black uppercase tracking-[0.3em]">— Fábio Rocha</p>
                 </div>
+                */}
               </div>
             </div>
             <div className="lg:w-1/2 reveal delay-200">
