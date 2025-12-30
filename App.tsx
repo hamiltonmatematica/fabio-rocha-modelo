@@ -234,6 +234,59 @@ const App: React.FC = () => {
         </div>
       </section>
 
+      {/* Portfolio Section */}
+      <section className="py-16 bg-navy-light overflow-hidden group/portfolio">
+        <div className="max-w-7xl mx-auto px-6 sm:px-8 lg:px-10 relative">
+
+          <button
+            onClick={() => scroll('left')}
+            className="absolute left-0 top-1/2 -translate-y-1/2 z-20 bg-black/50 hover:bg-black/80 text-white p-2 rounded-full opacity-100 md:opacity-0 md:group-hover/portfolio:opacity-100 transition-opacity duration-300"
+          >
+            <ChevronLeft size={32} />
+          </button>
+
+          <div
+            ref={scrollContainerRef}
+            className="flex overflow-x-auto gap-6 pb-8 snap-x snap-mandatory [&::-webkit-scrollbar]:hidden [-ms-overflow-style:'none'] [scrollbar-width:'none']"
+          >
+            {PORTFOLIO_ITEMS.map((item, idx) => (
+              <div
+                key={idx}
+                className={`relative flex-shrink-0 w-[85vw] sm:w-96 h-[550px] overflow-hidden group border border-white/5 snap-center ${item.type === 'image' ? 'cursor-pointer' : ''}`}
+                onClick={() => item.type === 'image' && setSelectedMedia(item)}
+              >
+                {item.type === 'image' ? (
+                  <>
+                    <img src={item.src} alt={item.alt} className="w-full h-full object-cover group-hover:scale-105 transition-all duration-1000" />
+                    <div className="absolute inset-0 bg-gradient-to-t from-navy/80 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end p-6">
+                      <span className="text-white font-serif italic text-lg">Ver detalhes</span>
+                    </div>
+                  </>
+                ) : (
+                  <div className="w-full h-full relative bg-black">
+                    <video
+                      src={`${item.src}#t=0.001`}
+                      className="w-full h-full object-cover"
+                      controls
+                      playsInline
+                      preload="metadata"
+                    />
+                  </div>
+                )}
+              </div>
+            ))}
+          </div>
+
+          <button
+            onClick={() => scroll('right')}
+            className="absolute right-0 top-1/2 -translate-y-1/2 z-20 bg-black/50 hover:bg-black/80 text-white p-2 rounded-full opacity-100 md:opacity-0 md:group-hover/portfolio:opacity-100 transition-opacity duration-300"
+          >
+            <ChevronRight size={32} />
+          </button>
+
+        </div>
+      </section>
+
       {/* Methodology Section */}
       <section id="metodo" className="py-32 bg-navy">
         <div className="max-w-7xl mx-auto px-6 sm:px-8 lg:px-10">
@@ -267,55 +320,7 @@ const App: React.FC = () => {
         </div>
       </section>
 
-      {/* Portfolio Section */}
-      <section className="py-16 bg-navy-light overflow-hidden group/portfolio">
-        <div className="max-w-7xl mx-auto px-6 sm:px-8 lg:px-10 relative">
 
-          <button
-            onClick={() => scroll('left')}
-            className="absolute left-0 top-1/2 -translate-y-1/2 z-20 bg-black/50 hover:bg-black/80 text-white p-2 rounded-full opacity-100 md:opacity-0 md:group-hover/portfolio:opacity-100 transition-opacity duration-300"
-          >
-            <ChevronLeft size={32} />
-          </button>
-
-          <div
-            ref={scrollContainerRef}
-            className="flex overflow-x-auto gap-6 pb-8 snap-x snap-mandatory [&::-webkit-scrollbar]:hidden [-ms-overflow-style:'none'] [scrollbar-width:'none']"
-          >
-            {PORTFOLIO_ITEMS.map((item, idx) => (
-              <div
-                key={idx}
-                className="relative flex-shrink-0 w-80 sm:w-96 h-[550px] overflow-hidden group cursor-pointer border border-white/5 snap-center"
-                onClick={() => setSelectedMedia(item)}
-              >
-                {item.type === 'image' ? (
-                  <img src={item.src} alt={item.alt} className="w-full h-full object-cover group-hover:scale-105 transition-all duration-1000" />
-                ) : (
-                  <div className="w-full h-full relative bg-black">
-                    <video src={item.src} className="w-full h-full object-cover opacity-80 group-hover:opacity-100 transition-opacity" muted loop playsInline />
-                    <div className="absolute inset-0 flex items-center justify-center">
-                      <div className="bg-gold/20 p-4 rounded-full backdrop-blur-sm border border-gold/50 text-gold group-hover:scale-110 transition-transform">
-                        <Play size={32} fill="currentColor" />
-                      </div>
-                    </div>
-                  </div>
-                )}
-                <div className="absolute inset-0 bg-gradient-to-t from-navy/80 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end p-6">
-                  <span className="text-white font-serif italic text-lg">Ver detalhes</span>
-                </div>
-              </div>
-            ))}
-          </div>
-
-          <button
-            onClick={() => scroll('right')}
-            className="absolute right-0 top-1/2 -translate-y-1/2 z-20 bg-black/50 hover:bg-black/80 text-white p-2 rounded-full opacity-100 md:opacity-0 md:group-hover/portfolio:opacity-100 transition-opacity duration-300"
-          >
-            <ChevronRight size={32} />
-          </button>
-
-        </div>
-      </section>
 
       {/* E-books Section */}
       <section id="ebooks" className="py-32 bg-navy overflow-hidden relative border-y border-white/5">
@@ -401,9 +406,9 @@ const App: React.FC = () => {
             </div>
 
             <div className="flex gap-6">
-              <div className="w-12 h-12 border border-white/10 flex items-center justify-center text-white hover:text-gold hover:border-gold transition-all cursor-pointer group">
+              <a href="https://www.instagram.com/fabiotennnis" target="_blank" rel="noopener noreferrer" className="w-12 h-12 border border-white/10 flex items-center justify-center text-white hover:text-gold hover:border-gold transition-all cursor-pointer group">
                 <span className="font-black text-[10px] group-hover:scale-110 transition-transform">IG</span>
-              </div>
+              </a>
             </div>
           </div>
 
