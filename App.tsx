@@ -156,11 +156,13 @@ const App: React.FC = () => {
         <div className="relative z-10 max-w-7xl mx-auto px-6 sm:px-8 lg:px-10 w-full">
           <div className="max-w-3xl">
             <h1 className="text-4xl md:text-8xl text-white leading-[1.1] mb-8 font-serif">
-              <span className="block" dangerouslySetInnerHTML={{ __html: 'T&ecirc;nis com' }} />
-              <span className="block">excel<span dangerouslySetInnerHTML={{ __html: '&ecirc;' }} />ncia, <span className="text-gold italic">m<span dangerouslySetInnerHTML={{ __html: '&eacute;' }} />todo</span></span>
+              <span className="block">Tênis com</span>
+              <span className="block">excelência, <span className="text-gold italic">método</span></span>
               <span className="block">e autoridade</span>
             </h1>
-            <p className="text-gray-400 text-lg md:text-2xl mb-12 leading-relaxed max-w-xl" dangerouslySetInnerHTML={{ __html: 'Treinamento de alto padr&atilde;o para adultos que buscam evolu&ccedil;&atilde;o t&eacute;cnica impec&aacute;vel e uma experi&ecirc;ncia premium dentro e fora da quadra.' }} />
+            <p className="text-gray-400 text-lg md:text-2xl mb-12 leading-relaxed max-w-xl">
+              Treinamento de alto padrão para adultos que buscam evolução técnica impecável e uma experiência premium dentro e fora da quadra.
+            </p>
 
             <div className="flex flex-col sm:flex-row gap-6">
               <a href={WHATSAPP_LINK} target="_blank" rel="noopener noreferrer" className="bg-gold text-navy px-12 py-6 rounded-none font-black uppercase tracking-wider text-sm hover:bg-white transition-all flex items-center justify-center gap-3 shadow-2xl group">
