@@ -48,6 +48,7 @@ const App: React.FC = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
   const [selectedMedia, setSelectedMedia] = useState<{ type: string, src: string } | null>(null);
+  const [isVideoPlaying, setIsVideoPlaying] = useState(false);
   const scrollContainerRef = useRef<HTMLDivElement>(null);
 
   const scroll = (direction: 'left' | 'right') => {
@@ -77,6 +78,26 @@ const App: React.FC = () => {
     handleScroll(); // Trigger on mount
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
+
+  useEffect(() => {
+    let interval: NodeJS.Timeout;
+
+    if (!isVideoPlaying) {
+      interval = setInterval(() => {
+        if (scrollContainerRef.current) {
+          const { current } = scrollContainerRef;
+          // Check if we reached the end
+          if (current.scrollLeft + current.clientWidth >= current.scrollWidth - 10) {
+            current.scrollTo({ left: 0, behavior: 'smooth' });
+          } else {
+            current.scrollBy({ left: 400, behavior: 'smooth' });
+          }
+        }
+      }, 3000);
+    }
+
+    return () => clearInterval(interval);
+  }, [isVideoPlaying]);
 
   return (
     <div className="min-h-screen bg-navy text-white selection:bg-gold selection:text-navy">
@@ -121,7 +142,7 @@ const App: React.FC = () => {
       </nav>
 
       {/* Hero Section */}
-      <section className="relative min-h-screen flex items-center overflow-hidden bg-navy pt-32 pb-20">
+      <section className="relative min-h-screen flex items-center overflow-hidden bg-navy pt-24 pb-12 md:pt-32 md:pb-20">
         <div className="absolute inset-0 z-0">
           <img
             src={IMAGES.hero}
@@ -134,7 +155,7 @@ const App: React.FC = () => {
 
         <div className="relative z-10 max-w-7xl mx-auto px-6 sm:px-8 lg:px-10 w-full">
           <div className="max-w-3xl">
-            <h1 className="text-5xl md:text-8xl text-white font-serif leading-[1.1] mb-8">
+            <h1 className="text-4xl md:text-8xl text-white font-serif leading-[1.1] mb-8">
               Tênis com <br />
               excelência, <span className="text-gold italic">método</span> <br />e autoridade
             </h1>
@@ -154,14 +175,14 @@ const App: React.FC = () => {
       </section>
 
       {/* About Section */}
-      <section id="sobre" className="py-32 bg-navy relative overflow-hidden">
+      <section id="sobre" className="py-20 md:py-32 bg-navy relative overflow-hidden">
         <div className="absolute top-0 right-0 w-1/3 h-full bg-navy-light/50 -skew-x-12 translate-x-1/2"></div>
         <div className="max-w-7xl mx-auto px-6 sm:px-8 lg:px-10 relative z-10">
           <div className="flex flex-col lg:flex-row items-center gap-20">
             <div className="lg:w-1/2 reveal">
               <div className="relative group">
                 <div className="absolute -top-6 -left-6 w-full h-full border border-gold/20 z-0"></div>
-                <img src={IMAGES.about} alt="Fábio Rocha Treinador" className="relative z-10 w-full h-[700px] object-cover object-top shadow-2xl transition-all duration-1000" />
+                <img src={IMAGES.about} alt="Fábio Rocha Treinador" className="relative z-10 w-full h-[500px] lg:h-[700px] object-cover object-top shadow-2xl transition-all duration-1000" />
                 <div className="absolute top-12 -left-12 bg-gold text-navy p-6 hidden lg:block z-20 shadow-2xl">
                   <Shield size={32} />
                 </div>
@@ -173,7 +194,7 @@ const App: React.FC = () => {
             </div>
             <div className="lg:w-1/2 reveal delay-200">
               <span className="text-gold font-black uppercase tracking-[0.4em] text-[10px]">O Especialista</span>
-              <h2 className="text-5xl md:text-6xl text-white font-serif mt-4 mb-10 leading-tight">Uma Trajetória Construída <br />Dentro da Quadra</h2>
+              <h2 className="text-4xl md:text-6xl text-white font-serif mt-4 mb-10 leading-tight">Uma Trajetória Construída <br />Dentro da Quadra</h2>
               <div className="space-y-8">
                 <p className="text-gray-400 text-xl leading-relaxed font-light">
                   Minha história no tênis começou aos 8 anos, catando bolas e aprendendo observando. Aos 10 anos, ingressei na Raw Tennis, sob a orientação de Edison Raw Júnior, treinando diariamente em um ambiente de disciplina, técnica e alto nível competitivo.
@@ -208,11 +229,11 @@ const App: React.FC = () => {
       </section>
 
       {/* Target Audience Section */}
-      <section id="ideal" className="py-32 bg-navy-light relative border-y border-white/5">
+      <section id="ideal" className="py-20 md:py-32 bg-navy-light relative border-y border-white/5">
         <div className="max-w-7xl mx-auto px-6 sm:px-8 lg:px-10 relative z-10">
           <div className="text-center max-w-3xl mx-auto mb-20 reveal">
             <span className="text-gold font-black uppercase tracking-[0.4em] text-[10px]">Posicionamento</span>
-            <h2 className="text-5xl md:text-6xl text-white font-serif mt-4 mb-8">Padrão de Elite</h2>
+            <h2 className="text-4xl md:text-6xl text-white font-serif mt-4 mb-8">Padrão de Elite</h2>
             <p className="text-gray-400 text-xl font-light leading-relaxed">
               Desenhado para o perfil executivo e profissionais que buscam excelência em todos os aspectos da vida.
             </p>
@@ -271,6 +292,9 @@ const App: React.FC = () => {
                       controls
                       playsInline
                       preload="metadata"
+                      onPlay={() => setIsVideoPlaying(true)}
+                      onPause={() => setIsVideoPlaying(false)}
+                      onEnded={() => setIsVideoPlaying(false)}
                     />
                   </div>
                 )}
@@ -289,12 +313,12 @@ const App: React.FC = () => {
       </section>
 
       {/* Methodology Section */}
-      <section id="metodo" className="py-32 bg-navy">
+      <section id="metodo" className="py-20 md:py-32 bg-navy">
         <div className="max-w-7xl mx-auto px-6 sm:px-8 lg:px-10">
           <div className="flex flex-col lg:flex-row gap-24">
             <div className="lg:w-2/5 reveal">
               <span className="text-gold font-black uppercase tracking-[0.4em] text-[10px]">Metodologia</span>
-              <h2 className="text-5xl text-white font-serif mt-4 mb-10 leading-tight">Clareza gera <br /><span className="text-gold italic">autoridade</span> em quadra</h2>
+              <h2 className="text-4xl md:text-5xl text-white font-serif mt-4 mb-10 leading-tight">Clareza gera <br /><span className="text-gold italic">autoridade</span> em quadra</h2>
               <p className="text-gray-400 text-xl font-light leading-relaxed mb-12">
                 Nossa abordagem elimina as incertezas. Cada movimento é analisado e ajustado para máxima eficiência técnica e tática.
               </p>
@@ -324,14 +348,14 @@ const App: React.FC = () => {
 
 
       {/* E-books Section */}
-      <section id="ebooks" className="py-32 bg-navy overflow-hidden relative border-y border-white/5">
+      <section id="ebooks" className="py-20 md:py-32 bg-navy overflow-hidden relative border-y border-white/5">
         <div className="max-w-7xl mx-auto px-6 sm:px-8 lg:px-10">
           <div className="bg-navy-light border border-white/5 rounded-none p-10 md:p-24 flex flex-col lg:flex-row items-center gap-24 relative overflow-hidden">
             <div className="absolute top-0 right-0 w-64 h-64 bg-gold/5 blur-[120px]"></div>
 
             <div className="lg:w-1/2 reveal">
               <span className="bg-gold text-navy text-[9px] uppercase font-black tracking-[0.4em] px-4 py-2 mb-10 inline-block">Material de Elite</span>
-              <h2 className="text-5xl md:text-6xl text-white font-serif mb-8 leading-tight">Excelência técnica <br />além da quadra</h2>
+              <h2 className="text-4xl md:text-6xl text-white font-serif mb-8 leading-tight">Excelência técnica <br />além da quadra</h2>
               <p className="text-gray-400 text-xl mb-12 leading-relaxed font-light">
                 Disponibilizo materiais técnicos exclusivos para jogadores que buscam dominar os fundamentos e acelerar a compreensão tática em tempo recorde.
               </p>
@@ -368,7 +392,7 @@ const App: React.FC = () => {
       </section>
 
       {/* CTA Final */}
-      <section className="py-40 bg-navy text-center relative overflow-hidden">
+      <section className="py-24 md:py-40 bg-navy text-center relative overflow-hidden">
         <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] bg-gold/5 blur-[150px] pointer-events-none"></div>
         <div className="max-w-4xl mx-auto px-6 relative z-10 reveal">
           <div className="mb-12 inline-block">
@@ -376,7 +400,7 @@ const App: React.FC = () => {
               <Award className="text-gold" size={72} />
             </div>
           </div>
-          <h2 className="text-6xl md:text-8xl text-white font-serif mb-10 leading-tight">O seu jogo merece <br /><span className="text-gold">este nível</span></h2>
+          <h2 className="text-4xl md:text-6xl lg:text-8xl text-white font-serif mb-10 leading-tight">O seu jogo merece <br /><span className="text-gold">este nível</span></h2>
           <p className="text-gray-400 text-2xl mb-16 max-w-2xl mx-auto font-light leading-relaxed">
             Agende sua consultoria técnica hoje e transforme seu desempenho com quem entende de exclusividade e resultado.
           </p>
