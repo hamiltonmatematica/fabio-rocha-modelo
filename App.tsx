@@ -160,7 +160,7 @@ const App: React.FC = () => {
               excelência, <span className="text-gold italic">método</span> <br />e autoridade
             </h1>
             <p className="text-gray-400 text-lg md:text-2xl mb-12 leading-relaxed max-w-xl font-light">
-              Treinamento de alto padrão para adultos que buscam evolução técnica impecável e uma experiência premium dentro e fora da quadra.
+              Treinamento de alto padrão para adultos que buscam evolução técnica impecável e uma experiência  premium dentro e fora da quadra.
             </p>
             <div className="flex flex-col sm:flex-row gap-6">
               <a href={WHATSAPP_LINK} target="_blank" rel="noopener noreferrer" className="bg-gold text-navy px-12 py-6 rounded-none font-black uppercase tracking-wider text-sm hover:bg-white transition-all flex items-center justify-center gap-3 shadow-2xl group">
