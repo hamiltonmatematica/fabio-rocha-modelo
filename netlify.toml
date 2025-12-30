@@ -1,7 +1,11 @@
 [[headers]]
   for = "/*"
   [headers.values]
-    Content-Type = "text/html; charset=UTF-8"
     X-Content-Type-Options = "nosniff"
     X-Frame-Options = "DENY"
     X-XSS-Protection = "1; mode=block"
+
+[[headers]]
+  for = "/*.html"
+  [headers.values]
+    Content-Type = "text/html; charset=UTF-8"
